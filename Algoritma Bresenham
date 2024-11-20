@@ -1,0 +1,32 @@
+procedure TForm1.Button1Click(Sender: TObject); 
+   var p,dx,dy,xend,f,x,y,xa,xb,ya,yb: integer; 
+begin 
+  xa:=216; xb:=345; ya:=145; yb:=270; 
+  dx:=abs(xa-xb); 
+  dy:=abs(ya-yb); 
+      p:=(2*dy)-dx; 
+      if (xa>xb) then 
+      begin 
+      x:=xb; 
+      y:=yb; 
+      xend:=xa; 
+      end 
+      else 
+      begin 
+      x:=xa; 
+      y:=ya; 
+      xend:=xb; 
+      end; 
+      canvas.Pixels[x,y]:=clred; 
+      for f:=x to xend do 
+      begin 
+      x:=x+1; 
+      if(p<0)then p:=p+(2*dy) 
+      else 
+      begin y:=y+1; 
+      p:=p+(2*(dy-dx)); 
+      end; 
+      canvas.Pixels[x,y]:=clred; 
+      end; 
+      end; 
+      end.
