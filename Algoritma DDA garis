@@ -1,0 +1,23 @@
+procedure TForm1.Button1Click(Sender: TObject); 
+var dx,dy,fstep,f,x1,x2,y1,y2:integer; 
+    deltax,deltay,x,y:real; 
+begin 
+  x1:=strtoint(edit1.Text); 
+  y1:=strtoint(edit2.Text); 
+  x2:=strtoint(edit3.Text); 
+  y2:=strtoint(edit4.Text); 
+  dx:=(x2-x1); 
+  dy:=(y2-y1); 
+      if(abs(dx)>abs(dy)) then fstep:=abs(dx) 
+      else fstep:=abs(dy); 
+      deltax:= dx/fstep; 
+      deltay:= dy/fstep; 
+      x:=x1;y:=y1; 
+      canvas.Pixels[trunc(x),trunc(y)]:=clblue; 
+      for f:=0 to fstep-1 do 
+begin 
+      x:=x+deltax; 
+      y:=y+deltay; 
+      canvas.Pixels[trunc(x),trunc(y)]:=clblue; 
+end; 
+end; 
