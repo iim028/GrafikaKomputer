@@ -1,0 +1,25 @@
+procedure TForm1.Button1Click(Sender: TObject); 
+var d,c,x,y,theta,thetf:real; 
+xc,yc,r:integer; 
+begin 
+xc:=250;yc:=200;r:=199; 
+thetf:=0.0;  
+d:=2*PI; 
+theta:=d/4; 
+c:=1/r; 
+while (thetf<theta)do 
+begin 
+x:=r*cos(thetf); 
+y:=-r*sin(thetf); 
+canvas.pixels[trunc(xc+x),trunc(yc+y)]:=clblue; 
+canvas.pixels[trunc(xc+x),trunc(yc-y)]:=clblue; 
+canvas.pixels[trunc(xc-x),trunc(yc+y)]:=clblue; 
+canvas.pixels[trunc(xc-x),trunc(yc-y)]:=clblue; 
+canvas.pixels[trunc(xc+y),trunc(yc+x)]:=clblue; 
+canvas.pixels[trunc(xc+y),trunc(yc-x)]:=clblue; 
+canvas.pixels[trunc(xc-y),trunc(yc+x)]:=clblue; 
+canvas.pixels[trunc(xc-y),trunc(yc-x)]:=clblue; 
+thetf:=thetf+c; 
+end; 
+end; 
+end.
