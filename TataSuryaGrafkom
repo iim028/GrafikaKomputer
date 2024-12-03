@@ -1,0 +1,135 @@
+unit Unit1; 
+interface 
+uses 
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, 
+Forms, 
+  Dialogs, StdCtrls, ExtCtrls; 
+type 
+  TForm1 = class(TForm) 
+    Button1: TButton; 
+    Panel1: TPanel; 
+    orbit3: TShape; 
+    orbit2: TShape; 
+    Sun: TShape; 
+    orbit1: TShape; 
+    Timer1: TTimer; 
+    biru: TShape; 
+    merah: TShape; 
+    putih: TShape; 
+    Orbit4: TShape; 
+    Orbit5: TShape; 
+    orbit6: TShape; 
+    Orbit7: TShape; 
+    orbit8: TShape; 
+    orbit9: TShape; 
+    merah2: TShape; 
+    kuning: TShape; 
+    skyblue: TShape; 
+    aqua: TShape; 
+    kuning2: TShape; 
+    biru2: TShape; 
+    Label1: TLabel; 
+    Button2: TButton; 
+    procedure Button1Click(Sender: TObject); 
+    procedure Timer1Timer(Sender: TObject); 
+    procedure Button2Click(Sender: TObject); 
+  private 
+    { Private declarations } 
+  public 
+    { Public declarations } 
+  end;
+var 
+  Form1: TForm1; 
+  theta,d,c:real; 
+  constanta,f:integer; 
+implementation 
+{$R *.dfm} 
+procedure TForm1.Button1Click(Sender: TObject); 
+begin 
+  label1.Visible:=true; 
+  constanta:=5; 
+  biru.Visible:=true; 
+  merah.Visible:=true; 
+  merah2.Visible:=true; 
+  putih.Visible:=true; 
+  kuning.Visible:=true; 
+  skyblue.Visible:=true; 
+  aqua.Visible:=true; 
+  kuning2.Visible:=true; 
+  biru2.Visible:=true; 
+  Timer1.Enabled:=TRUE; 
+  theta:=0.0; 
+  c:=1/100; 
+  d:=2*PI; 
+  f:= panel1.clientwidth; 
+end;
+procedure TForm1.Button2Click(Sender: TObject); 
+begin 
+Close; 
+end; 
+procedure TForm1.Timer1Timer(Sender: TObject); 
+var x1,y1,x2,y2,x3,y3,x4,y4:real; 
+      x5,y5,x6,y6,x7,y7,x8,y8,x9,y9:real; 
+begin 
+    label1.Left:=f-1;f:=f-1; 
+    if (label1.left+label1.width<=(-1*(panel1.clientwidth)))then 
+    f:=panel1.clientwidth; 
+    if (theta<=(2*d)) then 
+    begin 
+    x9:=((orbit9.width)/2)+(orbit9.Left)
+((orbit9.width)/2)*cos(theta); 
+    y9:=((orbit9.height/2)+(orbit9.top))+(orbit9.height/2)*sin(theta); 
+    x8:=((orbit8.width)/2)+(orbit8.Left)
+((orbit8.width)/2)*cos(2*theta); 
+    
+y8:=((orbit8.height/2)+(orbit8.top))+(orbit8.height/2)*sin(2*theta); 
+    x7:=((orbit7.width)/2)+(orbit7.Left)
+((orbit7.width)/2)*cos(4*theta); 
+    
+y7:=((orbit7.height/2)+(orbit7.top))+(orbit7.height/2)*sin(4*theta); 
+    
+x6:=((orbit6.width)/2)+(orbit6.Left)+((orbit6.width)/2)*cos(5*theta); 
+    y6:=((orbit6.height/2)+(orbit6.top))
+(orbit6.height/2)*sin(5*theta); 
+    
+x5:=((orbit5.width)/2)+(orbit5.Left)+((orbit5.width)/2)*cos(3*theta); 
+    y5:=((orbit5.height/2)+(orbit5.top))
+(orbit5.height/2)*sin(3*theta); 
+    
+x4:=((orbit4.width)/2)+(orbit4.Left)+((orbit4.width)/2)*cos(theta); 
+    y4:=((orbit4.height/2)+(orbit4.top))-(orbit4.height/2)*sin(theta); 
+    
+x3:=((orbit3.width)/2)+(orbit3.Left)+((orbit3.width)/2)*cos(2*theta); 
+    y3:=((orbit3.height/2)+(orbit3.top))
+(orbit3.height/2)*sin(2*theta); 
+    
+x2:=((orbit2.width)/2)+(orbit2.Left)+((orbit2.width)/2)*cos(4*theta); 
+    y2:=((orbit2.height/2)+(orbit2.top))
+(orbit2.height/2)*sin(4*theta); 
+    
+x1:=((orbit1.width)/2)+(orbit1.Left)+((orbit1.width)/2)*cos(6*theta); 
+    y1:=((orbit1.height/2)+(orbit1.top))
+(orbit1.height/2)*sin(6*theta); 
+    biru2.left:=trunc(x9)-constanta; 
+    biru2.Top:=trunc(y9)-constanta; 
+    kuning2.left:=trunc(x8)-constanta; 
+    kuning2.Top:=trunc(y8)-constanta; 
+    aqua.left:=trunc(x7)-constanta; 
+    aqua.Top:=trunc(y7)-constanta; 
+    skyblue.left:=trunc(x6)-constanta; 
+    skyblue.Top:=trunc(y6)-constanta; 
+    kuning.left:=trunc(x5)-constanta; 
+    kuning.Top:=trunc(y5)-constanta; 
+    merah2.left:=trunc(x4)-constanta; 
+    merah2.Top:=trunc(y4)-constanta; 
+    merah.left:=trunc(x2)-constanta; 
+    merah.Top:=trunc(y2)-constanta; 
+    biru.left:=trunc(x3)-constanta; 
+    biru.Top:=trunc(y3)-constanta; 
+    putih.left:=trunc(x1)-constanta; 
+    putih.Top:=trunc(y1)-constanta; 
+    theta:=theta+c; 
+    end; 
+    if (theta>=2*d) then theta:=0.0; 
+end; 
+end.
